@@ -1,0 +1,10 @@
+To Run the dash application
+Add the Final_Project.ipynb , owid-covid-data.csv and applemobilitytrends.csv files to the jupyter notebook folder.
+Then Run the Final_Project.ipynb, in the last cell the code return a local url, which can be clicked to open the dash app in the browser.
+The libraries that are needed:
+pandas
+numpy
+dash 		 The guide for installing dash on jupyer: https://drive.google.com/file/d/1DBrfNSXIw-Pngpoo4DLxkvnnjI7BfTXq/view
+sklearn		 pip install -U scikit-learn
+statsmodels	 pip install statsmodels
+pmdarima	 pip install pmdarima
