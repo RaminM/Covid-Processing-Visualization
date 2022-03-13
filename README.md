@@ -2,15 +2,15 @@
 Processing and visualization of Covid19 data (Python and Dash)
 
 # Needed Libraries
-Pandas:
+-Pandas:
 pip install pandas
-Numpy:
+-Numpy:
 pip install numpy
-Dash Plotly:
+-Dash Plotly:
 pip install dash
-Sklearn:
+-Sklearn:
 pip install -U scikit-learn
-Statsmodel:
+-Statsmodel:
 pip install statsmodels
-pmdarima:
+-pmdarima:
 pip install pmdarima
