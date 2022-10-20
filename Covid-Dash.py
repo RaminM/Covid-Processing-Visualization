@@ -582,7 +582,8 @@ all_pred_bar.show()
 # Making the dash app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
+server = app.server
+app.title = "Covid 19 Visualization and prediction"
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     html.Div([
         html.H1(children='Covid statistics Worldwide', style={
