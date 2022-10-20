@@ -37,8 +37,8 @@ mseList = np.array(0)
 modelNames = np.array(0)
 
 # read database
-df = pd.read_csv("../owid-covid-data.csv")
-apple = pd.read_csv("./applemobilitytrends.csv")
+df = pd.read_csv("owid-covid-data.csv")
+apple = pd.read_csv("applemobilitytrends.csv")
 
 # add days since to datbase
 basedate = pd.Timestamp('2020-01-01')
