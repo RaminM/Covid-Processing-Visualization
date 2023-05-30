@@ -30,7 +30,8 @@ colors = {
     'clBlue': '#06B7CF',
     'clOrange': '#DFB66F',
     'clGreen': '#65FA9E',
-    'clRed': '#D84F51'
+    'clRed': '#D84F51',
+    'clh1b':'#283035'
 
 }
 
@@ -94,7 +95,7 @@ apple_edited['drive'] = apple_us_drive.iloc[:, 0]
 apple_edited['walk'] = apple_us_walk.iloc[:, 0]
 apple_edited['transit'] = apple_us_transit.iloc[:, 0]
 apple_edited = apple_edited[apple_edited["date"] > "2020-01-21"]
-apple_edited
+
 # filter covid datset for US
 us_covid = df1[df1["location"] == "United States"]
 
@@ -234,7 +235,7 @@ continent_pop = [1373486472, 4678444992,
                  748962983, 596581283, 43219954, 434260137]
 continent['pop'] = continent_pop
 continent['cases_per_pop'] = continent['new_cases']/continent['pop']
-continent
+
 
 # pie chart
 
@@ -269,7 +270,6 @@ fig = px.choropleth(df2, locations="location",
                     animation_frame=df2["date"].dt.strftime('%Y-%m-%d'),
                     title='Cases over time', color_continuous_scale=px.colors.sequential.matter)
 fig.update(layout_coloraxis_showscale=False)
-fig.show()
 
 # Correalation between parameters
 dfCorr = df1[['total_cases', 'total_deaths', 'total_tests', 'total_vaccinations',
@@ -315,7 +315,7 @@ linear_score = np.sqrt(mean_squared_error(
     valid_data['total_cases'], valid_data['linear_pred']))
 mseList = np.append(mseList, linear_score)
 modelNames = np.append(modelNames, 'Linear Regression')
-print("Linear MSE is: ", linear_score)
+
 # Draw model and data
 # make the graph
 fig_ww_line_model_data = go.Figure()
@@ -352,7 +352,6 @@ poly_score = np.sqrt(mean_squared_error(
     valid_data['total_cases'], valid_data['poly_pred']))
 mseList = np.append(mseList, poly_score)
 modelNames = np.append(modelNames, 'Polynomial Regression')
-print("Poly MSE is: ", poly_score)
 
 
 # Draw model and data
@@ -578,7 +577,6 @@ all_pred_bar.update_layout(
     font_color=colors['text'],
     title_font_color=colors['text'],
     legend_title_font_color=colors['text'])
-all_pred_bar.show()
 
 # Making the dash app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -588,7 +586,7 @@ app.title = "Covid 19 Visualization and prediction"
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     html.Div([
         html.H1(children='Covid statistics Worldwide', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
         html.Div([
             dcc.Graph(id='ww_total_graph', figure=ww_t_c, clickData=None, hoverData=None,
                       config={
@@ -643,7 +641,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     ]),
     html.Div([
         html.H1(children='Total Cases on the World Map', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
         dcc.Graph(id='ww_geo', figure=ww_geo_fig, clickData=None, hoverData=None,
                   config={
                      'staticPlot': False,     # True, False
@@ -659,7 +657,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     ]),
     html.Div([
         html.H1(children='Covid statistics by continent', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
         dcc.Graph(id='continent_total_graph', figure=pie_ww_fig, clickData=None, hoverData=None,
                   config={
                       'staticPlot': False,     # True, False
@@ -675,7 +673,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     ]),
     html.Div([
         html.H1(children='Covid statistics by country', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
 
         html.H4(children='Select country', style={
                 'textAlign': 'left', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
@@ -738,7 +736,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     # Prediction charts
     html.Div([
         html.H1(children='Total covid case predictions', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
         html.Div([
             dcc.Graph(id='linear_pred', figure=fig_ww_line_model_data, clickData=None, hoverData=None,
                       config={
@@ -820,7 +818,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         ], className='row'),
         html.Div([
             html.H1(children='Comparison of prediction models', style={
-                    'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                    'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
             html.Div([
                 dcc.Graph(id='pred_compare', figure=fig_all_pred, clickData=None, hoverData=None,
                           config={
@@ -851,7 +849,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     ]),
     html.Div([
         html.H1(children='Future Covid Prediction', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
         html.Div([
             dcc.Graph(id='future_pred', figure=fig_arima_pred, clickData=None, hoverData=None,
                       config={
@@ -870,7 +868,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     # Correlations
     html.Div([
         html.H1(children='Correlation Between parameters', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
         html.Div([
             dcc.Graph(id='correlation', figure=fig_cor, clickData=None, hoverData=None,
                       config={
@@ -889,7 +887,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     # Apple Mobility
     html.Div([
         html.H1(children='Reviewing Apples Moblility Datbase', style={
-                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['chartPaper']}),
+                'textAlign': 'center', 'color': colors['text'], 'backgroundColor': colors['clh1b']}),
         html.Div([
             dcc.Graph(id='us_daily', figure=us_daily, clickData=None, hoverData=None,
                       config={
@@ -944,7 +942,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
     ]),
     html.Div([
         html.H1(children='----', style={'textAlign': 'center',
-                'color': colors['text'], 'backgroundColor': colors['chartPaper']})
+                'color': colors['text'], 'backgroundColor': colors['clh1b']})
     ])
 
 ])
