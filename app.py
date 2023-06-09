@@ -34,6 +34,12 @@ colors = {
     'clh1b':'#283035'
 
 }
+# Making the dash app
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
+app.title = "Covid 19 Visualization and prediction"
+#
 
 mseList = np.array(0)
 modelNames = np.array(0)
@@ -578,11 +584,7 @@ all_pred_bar.update_layout(
     title_font_color=colors['text'],
     legend_title_font_color=colors['text'])
 
-# Making the dash app
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-server = app.server
-app.title = "Covid 19 Visualization and prediction"
+
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
     html.Div([
         html.H1(children='Covid statistics Worldwide', style={
