@@ -1,8 +1,8 @@
 dash
 numpy
 pandas
-pmdarima
 scikit_learn
 statsmodels
+pmdarima
 gunicorn
 
